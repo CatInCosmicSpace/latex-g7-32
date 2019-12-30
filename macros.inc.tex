@@ -1,0 +1,60 @@
+% Любимые команды
+\newcommand{\Code}[1]{\textbf{#1}}
+
+\newcommand\arraybslash{\let\\\@arraycr}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\renewcommand{\tabularxcolumn}[1]{m{#1}}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+
+\newcommand\RPZ[1]{
+	\def\RPZTitle{#1}
+}
+
+\newcommand\RPZTheme[1]{
+	\def\RPZTitleTheme{#1}
+}
+
+\newcommand\RPZGroup[1]{
+	\def\RPZTitleGroup{#1}
+}
+
+\newcommand\RPZStudent[1]{
+	\def\RPZTitleStudent{#1}
+}
+
+\newcommand\RPZTeacher[1]{
+	\def\RPZTitleTeacher{#1}
+}
+\def\SignatureLength{\maxof{\widthof{\RPZTitleTeacher}}{\widthof{\RPZTitleStudent}}}
+
+
+
+\newcommand\Signature[1]{
+	\noindent
+	\hfill
+	\begin{minipage}{7cm}
+		\begin{flushright}
+			\null\hfill
+			$\stackrel
+				[\text{\rmfamily\fontsize{9pt}{9pt}\selectfont (Подпись, дата)}]
+				{}
+				{\uline{\parbox{2.5cm}{\text{\rmfamily\fontsize{12pt}{12pt}\selectfont \null}}\rule[35pt]{0pt}{0pt}}}$
+			\hfill
+			$\stackrel
+				[\text{\rmfamily\fontsize{9pt}{9pt}\selectfont (И.О. Фамилия)}]
+				{}
+				{\uline{\parbox{\SignLen ex + 10 pt}{\centering\rmfamily\fontsize{12pt}{12pt}\selectfont #1} \rule[35pt]{0pt}{0pt}}}$
+		\end{flushright}
+	\end{minipage}
+}
+
+\newtheorem{definition}{Определение}
+\usepackage{chngcntr}
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+\usepackage{float}
+
+\renewcommand*\thesection{\arabic{section}}

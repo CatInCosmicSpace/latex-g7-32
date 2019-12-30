@@ -1,0 +1,96 @@
+\StrLen{\RPZTitleStudent}[\StudentLen]
+\StrLen{\RPZTitleTeacher}[\TeacherLen]
+\ifthenelse{\StudentLen > \TeacherLen}{\StrLen{\RPZTitleStudent}[\SignLen]}{\StrLen{\RPZTitleTeacher}[\SignLen]}
+
+\pagestyle{empty}
+\noindent
+\begin{tabularx}{\textwidth}{L{2cm} C{\textwidth - 2.7cm}}
+    \includegraphics[scale=1]{inc/bmstu.jpg} &
+    {\centering\rmfamily\bfseries\fontsize{11pt}{11pt}\selectfont
+            Министерство науки и высшего образования Российской Федерации    \\
+            Федеральное государственное бюджетное образовательное учреждение \\
+            высшего образования                                              \\
+            <<Московский государственный технический университет             \\
+            имени Н.Э. Баумана                                               \\
+            (национальный исследовательский университет)>>                   \\
+            (МГТУ им. Н.Э. Баумана)}                                         \\
+    \bottomrule[2pt]
+    \bottomrule
+\end{tabularx}
+
+\noindent
+\begin{tabularx}{\textwidth}{lX}
+    {\fontsize{12pt}{12pt}\selectfont ФАКУЛЬТЕТ}
+                                               &
+    {\fontsize{12pt}{12pt}\selectfont <<Информатика и системы управления>> (ИУ)} \\
+    \hhline{~~}
+    {\fontsize{12pt}{12pt}\selectfont КАФЕДРА} &
+    {\fontsize{12pt}{12pt}\selectfont <<Информационная безопасность>> (ИУ8)}     \\
+    \hhline{~~}
+\end{tabularx}
+\vspace{1cm}
+
+\noindent
+{\centering\rmfamily\bfseries\fontsize{20pt}{20pt}\selectfont
+    РАСЧЕТНО-ПОЯСНИТЕЛЬНАЯ ЗАПИСКА \\ \bigskip
+    \MakeTextUppercase{\RPZTitle} \\ \bigskip
+    НА ТЕМУ: \\ \bigskip
+}
+
+\vspace{0.5cm}
+
+\noindent
+\adjustbox{minipage=\textwidth}{\centering\bfseries\fontsize{20pt}{30pt}\selectfont \emph{\RPZTitleTheme}}
+
+\vfill
+
+\noindent
+{\rmfamily\fontsize{14pt}{14pt}\selectfont Студент} \hfill $\stackrel[\text{\rmfamily\fontsize{9pt}{9pt}\selectfont (Группа, личное дело)}]{}{\uline{\text{\rmfamily\fontsize{14pt}{14pt}\selectfont \RPZTitleGroup}}}$ \hfill\null \Signature{\RPZTitleStudent}
+
+\noindent
+{\rmfamily\fontsize{14pt}{14pt}\selectfont Руководитель курсовой работы} \hfill \Signature{\RPZTitleTeacher}
+
+
+\noindent
+\begin{minipage}{0.4\textwidth}
+    Приёмная комиссия
+    \\
+    \vfill
+\end{minipage}
+\begin{minipage}{0.6\textwidth}
+    \begin{tabularx}{\textwidth}{Y>{\hsize=.05\hsize}YY}
+        ~ & ~ & ~ \\
+        \hhline{-~-}
+        {\rmfamily\fontsize{9pt}{9pt}\selectfont (Оценка, подпись, дата)} & ~ & {\rmfamily\fontsize{9pt}{9pt}\selectfont (И.О. Фамилия)} \\
+    \end{tabularx}
+\end{minipage}
+\noindent
+\begin{minipage}{0.4\textwidth}
+    ~
+    \\
+    \vfill
+\end{minipage}
+\begin{minipage}{0.6\textwidth}
+    \begin{tabularx}{\textwidth}{Y>{\hsize=.05\hsize}YY}
+        ~ & ~ & ~ \\
+        \hhline{-~-}
+        {\rmfamily\fontsize{9pt}{9pt}\selectfont (Оценка, подпись, дата)} & ~ & {\rmfamily\fontsize{9pt}{9pt}\selectfont (И.О. Фамилия)} \\
+    \end{tabularx}
+\end{minipage}
+\noindent
+\begin{minipage}{0.4\textwidth}
+    ~
+    \\
+    \vfill
+\end{minipage}
+\begin{minipage}{0.6\textwidth}
+    \begin{tabularx}{\textwidth}{Y>{\hsize=.05\hsize}YY}
+        ~ & ~ & ~ \\
+        \hhline{-~-}
+        {\rmfamily\fontsize{9pt}{9pt}\selectfont (Оценка, подпись, дата)} & ~ & {\rmfamily\fontsize{9pt}{9pt}\selectfont (И.О. Фамилия)} \\
+    \end{tabularx}
+\end{minipage}
+
+{\centering\rmfamily\itshape\fontsize{14pt}{14pt}\selectfont Москва, \the\year~г. \par}
+\newpage
+\pagestyle{plain}

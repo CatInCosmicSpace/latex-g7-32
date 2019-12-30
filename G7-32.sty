@@ -1,0 +1,117 @@
+% This package designed and commented in Russian (utf-8 encoding).
+%
+% Лицензия GNU GPL v2 и совместимые
+%
+% Автор - Алексей Томин, с помощью списка рассылки latex-gost-request@ice.ru
+% Все вопросы, замечания и пожелания сюда: mailto:alxt@yandex.ru
+%
+% Дальнейшая разработка и поддержка - Михаил Конник,
+% связаться можно по адресу mydebianblog@gmail.com
+%
+% Further tweaks and development (according to the requirements of
+% ГОСТ 7.32-2001 ред. 2009 года.pdf and some other random wishes)
+% -- Ivan Zakharyaschev <imz@altlinux.org>.
+\ProvidesPackage{G7-32}[2015/11/01 v2.00 Titles for GOST 7.32-2001]
+
+%%%%%%%%%%%%%%%%%%
+%Latex 2012 and up
+\newcommand*{\No}{\textnumero}
+
+% ГОСТ 7.32-2001 ред. 2009 года.pdf item 6.1.2:
+% Полужирный шрифт не применяется
+\renewcommand\GostTitleStyle{%
+\hyphenpenalty=10000
+    \if@usebold%
+    \bfseries%
+    \else%
+    \normalfont%
+    \fi%
+}%
+
+% ГОСТ 7.32-2001 ред. 2009 года.pdf item 6.2.1:
+% Заголовки структурных элементов следует располагать в середине
+% строки без точки в конце и печатать прописными буквами, не
+% подчёркивая.
+\renewcommand\Gost@StructChapterStyle{
+\hyphenpenalty=10000
+    \if@usebold
+    \bfseries
+    \fi
+    \centering\MakeUppercase
+}
+
+% Get rid of the large font in chapter titles
+% (not sure whether this is regulated)
+% (TODO: Perhaps, this should be an option.)
+\renewcommand\Gost@MainChapterStyle{%
+\hyphenpenalty=10000
+    \if@usebold%
+    \bfseries%
+    \fi%
+}%
+
+%стандартные части
+\newcommand\Executors{%список исполнителей
+ \chapter*{Список~%
+           исполнителей}%
+}
+\newcommand\Referat{%реферат
+ \chapter*{Реферат}%
+}
+
+\addto\captionsrussian{%
+ \def\contentsname{%
+  Содержание}%
+ \def\bibname{СПИСОК~ИСПОЛЬЗОВАННЫХ~ИСТОЧНИКОВ}%
+}
+
+\RequirePackage[acronym, nopostdot, toc, xindy={glsnumbers=false, language=russian}]{glossaries}
+\GlsSetXdyCodePage{utf8}
+\RequirePackage[automake]{glossaries-extra}
+\makeglossaries
+\newcommand\TOCandGloss{ % Содержание и списки терминов и сокращений
+    %\disableboldchapterintoc
+    \renewcommand{\contentsname}{СОДЕРЖАНИЕ}
+    \tableofcontents
+    \printglossary[title=ТЕРМИНЫ~И~ОПРЕДЕЛЕНИЯ, toctitle=ТЕРМИНЫ~И~ОПРЕДЕЛЕНИЯ, nonumberlist]
+    \printglossary[type=acronym, title=ПЕРЕЧЕНЬ~СОКРАЩЕНИЙ~И~ОБОЗНАЧЕНИЙ, toctitle=ПЕРЕЧЕНЬ~СОКРАЩЕНИЙ~И~ОБОЗНАЧЕНИЙ, nonumberlist]
+}
+
+\newenvironment{abstract}{%То же самое, только как у белых людей -- Коротков И.
+ \Referat
+}{}
+\newcommand\Defines{%глоссарий
+    \newpage
+    \section*{\centering ОПРЕДЕЛЕНИЯ}%Ugly hack((( FIXME
+    % суть в том что Defines находится внутри nomencl и только section выкидывает в нужное место
+    \section*{\mdseries В настоящем отчете о НИР применяют следующие термины с соответствующими определениями.}% Ugly hack(((
+}
+%\newcommand\Defines{%определения
+% \chapter*{Определения}%
+%}
+\newcommand\Abbreviations{%обозначения и сокращения
+ \chapter*{ОБОЗНАЧЕНИЯ~И~СОКРАЩЕНИЯ}%
+}
+\newcommand\Introduction{ % Введение
+ \chapter{ВВЕДЕНИЕ}%
+}
+\newcommand\General{ % Введение
+\chapter{ОСНОВНАЯ~ЧАСТЬ}%
+}
+\newcommand\Conclusion{%заключение
+ \chapter{ЗАКЛЮЧЕНИЕ}%
+}
+\newcommand{\Bibliography}[1]{
+  \bibliographystyle{ugost2008}
+  \bibliography{#1}
+}
+
+\newcommand*\ulfill{\mbox{}\leaders\hrule depth 2pt height -1.5pt\hfill} % similar to an underline
+
+\RequirePackage{etoolbox}%                                  For \newrobustcmd
+\def\beamer@calltheme#1#2#3{%
+    \def\beamer@themelist{#2}%
+    \@for\beamer@themename:=\beamer@themelist\do
+    {\usepackage[{#1}]{#3\beamer@themename}}}
+
+  \newrobustcmd*\gosttitle[2][]{\beamer@calltheme{#1}{#2}{gosttitle}}

@@ -1,0 +1,37 @@
+\documentclass[utf8, 14pt, bold]{G7-32}
+\include{preamble.inc}
+\include{listings.inc}
+\include{macros.inc}
+\include{glossary}
+\begin{document}
+
+\frontmatter
+
+\RPZ{к научно-исследовательской работе}
+\RPZTheme{\null\hfill \bigskip Исследование методов решения проблемы \hfill\null \\ \null\hfill \bigskip миллионеров Яо и вариантов применения \hfill\null \\ \null\hfill \bigskip этих решений в тематике финансовых \hfill\null \\ \null\hfill \bigskip и экономических задач \hfill\null} % ugly
+\RPZGroup{ИУ8-94}
+\RPZStudent{А.Д. Егорова}
+\RPZTeacher{Д.А. Жуков}
+\include{00-title-bmstu} % 1
+% задание - 2
+% календарный план - 3
+\setcounter{page}{4}
+
+\include{00-abstract}
+\TOCandGloss
+\include{12-intro}
+\include{20-analysis}
+\include{30-design}
+\include{40-impl}
+\include{50-research}
+\include{60-economics}
+\include{70-bzd}
+\include{80-conclusion}
+\Bibliography{rpz}
+
+\def\appendixname{ПРИЛОЖЕНИЕ}
+\appendix
+\input{90-appendix1}
+\input{91-appendix2}
+
+\end{document}
